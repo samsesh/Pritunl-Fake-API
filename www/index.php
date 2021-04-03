@@ -1,5 +1,5 @@
 <?php
-//Author: Simon Beginn 2020
+//Author: SamSesh 2021
 
 header("Access-Control-Allow-Origin: *"); //Allow access from everywhere...
 $code = 200;
@@ -106,11 +106,11 @@ if(isset($_GET['path'])) {
         $result['key'] = null; //Insert here a key to unlock the stripe store (is a string). And buy the subscription...
         $result['plans'] = array();
         $result['plans']['premium'] = array();
-        $result['plans']['premium']['amount'] = 42;
+        $result['plans']['premium']['amount'] = 0;
         $result['plans']['enterprise'] = array();
-        $result['plans']['enterprise']['amount'] = 42;
+        $result['plans']['enterprise']['amount'] = 0;
         $result['plans']['enterprise_plus'] = array();
-        $result['plans']['enterprise_plus']['amount'] = 42;
+        $result['plans']['enterprise_plus']['amount'] = 0;
     } else if(preg_match('/auth\/.*/', $_GET['path'])) {
         $result = array('error' => 'Sorry, but SSO is currently not supported.');
         $code = 401; //Let Pritunl fail, without 500 codes (it will show 405)
