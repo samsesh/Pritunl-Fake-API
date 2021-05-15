@@ -60,8 +60,8 @@ Loaded Modules:
 
 Then clone this repo if you've not done this already and `cd` into the root of the project:
 ```bash
-git clone https://gitlab.simonmicro.de/simonmicro/pritunl-fake-api.git
-cd ./pritunl-fake-api
+git clone https://gitlab.simonmicro.de/samsesh/Pritunl-Fake-API.git
+cd ./Pritunl-Fake-API
 ```
 After this is done copy over the API server files to the server and set permissions
 ```bash
