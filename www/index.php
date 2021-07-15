@@ -13,7 +13,7 @@ if(isset($_GET['path'])) {
     //Any notification/[version] will be answered here
     if(preg_match('/notification.*/', $_GET['path'])) {
         $result = new stdClass;
-        //$result->message = 'Fake API endpoint for v1.29.2547.95.375993 active and reachable (contacted at ' . date('r') . ').';
+        $result->message = 'https://github.com/samsesh/donate. / https://samsesh.net';
         $result->vpn = false; //Idk
         $result->www = false; //Idk
     } else if(isset($body->license) && preg_match('/subscription.*/', $_GET['path'])) {
@@ -56,14 +56,14 @@ if(isset($_GET['path'])) {
             $result->active = $license != 'premium'; //If true the stylesheet from below will be activated. This will also hide some elements, so don't use it on premium users (which will have the minimal stylesheet and so the subscription info will be empty)...
             $result->status = $state;
             $result->plan = $license;
-            $result->quantity = 42;
-            $result->amount = 42;
-            $result->credit = 42;
+            $result->quantity = 50;
+            $result->amount = 50;
+            $result->credit = 50;
             $result->period_end = false;
             $result->trial_end = false;
             $result->cancel_at_period_end = false;
             $result->styles = new stdClass;
-            $result->styles->etag = 42;
+            $result->styles->etag = 50;
             $result->styles->last_modified = time();
             $result->styles->data = $stylesheet;
         }
@@ -71,13 +71,13 @@ if(isset($_GET['path'])) {
             $result->active = false; //Here we can savely disable any styles
             $result->status = $state;
             $result->plan = $license;
-            $result->quantity = 42;
-            $result->amount = 42;
+            $result->quantity = 49;
+            $result->amount = 49;
             $result->period_end = false;
             $result->trial_end = false;
             $result->cancel_at_period_end = false;
             $result->styles = new stdClass;
-            $result->styles->etag = 42;
+            $result->styles->etag = 49;
             $result->styles->last_modified = time();
             $result->styles->data = $stylesheet;
         }
@@ -106,11 +106,11 @@ if(isset($_GET['path'])) {
         $result['key'] = null; //Insert here a key to unlock the stripe store (is a string). And buy the subscription...
         $result['plans'] = array();
         $result['plans']['premium'] = array();
-        $result['plans']['premium']['amount'] = 0;
+        $result['plans']['premium']['amount'] = 42;
         $result['plans']['enterprise'] = array();
-        $result['plans']['enterprise']['amount'] = 0;
+        $result['plans']['enterprise']['amount'] = 42;
         $result['plans']['enterprise_plus'] = array();
-        $result['plans']['enterprise_plus']['amount'] = 0;
+        $result['plans']['enterprise_plus']['amount'] = 42;
     } else if(preg_match('/auth\/.*/', $_GET['path'])) {
         $result = array('error' => 'Sorry, but SSO is currently not supported.');
         $code = 401; //Let Pritunl fail, without 500 codes (it will show 405)
