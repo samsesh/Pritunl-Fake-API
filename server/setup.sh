@@ -65,5 +65,5 @@ do
             ;;
     esac
 done
-
+sudo systemctl restart pritunl mongod 
 exit 0
