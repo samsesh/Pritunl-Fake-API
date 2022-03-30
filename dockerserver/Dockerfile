@@ -15,7 +15,7 @@ RUN echo "UTC" > /etc/timezone
 RUN apk add --no-cache zip unzip curl sqlite nginx supervisor
 
 #copy file
-COPY ./www/* /var/www/html/
+COPY ../www/* /var/www/html/
 
 # Installing bash
 RUN apk add bash
@@ -50,8 +50,8 @@ RUN ln -s /usr/bin/php8 /usr/bin/php
 # Configure PHP
 RUN mkdir -p /run/php/
 RUN touch /run/php/php8.0-fpm.pid
-COPY .docker/php-fpm.conf /etc/php8/php-fpm.conf
-COPY .docker/php.ini-production /etc/php8/php.ini
+COPY ./php-fpm.conf /etc/php8/php-fpm.conf
+COPY ./php.ini-production /etc/php8/php.ini
 #Configure nginx
 COPY .docker/nginx.conf /etc/nginx/
 
