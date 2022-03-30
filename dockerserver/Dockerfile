@@ -15,7 +15,7 @@ RUN echo "UTC" > /etc/timezone
 RUN apk add --no-cache zip unzip curl sqlite nginx supervisor
 
 #copy file
-COPY ../www/* /var/www/html/
+COPY ./www/* /var/www/html/
 
 # Installing bash
 RUN apk add bash
@@ -52,8 +52,13 @@ RUN mkdir -p /run/php/
 RUN touch /run/php/php8.0-fpm.pid
 COPY ./php-fpm.conf /etc/php8/php-fpm.conf
 COPY ./php.ini-production /etc/php8/php.ini
+
+# Configure supervisor
+RUN mkdir -p /etc/supervisor.d/
+COPY ./supervisord.ini /etc/supervisor.d/supervisord.ini
+
 #Configure nginx
-COPY .docker/nginx.conf /etc/nginx/
+COPY ./nginx.conf /etc/nginx/
 
 RUN mkdir -p /run/nginx/
 RUN touch /run/nginx/nginx.pid
@@ -61,8 +66,7 @@ RUN touch /run/nginx/nginx.pid
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
-RUN rm /var/www/html/index.html
-RUN chown www-data:www-data  -R /var/www/html
-RUN chmod -R 774 /var/www/html/
+RUN chmod -R 777 /var/www/html/
 #RUN systemctl restart apache2
 EXPOSE 80
+CMD ["supervisord", "-c", "/etc/supervisor.d/supervisord.ini"]
