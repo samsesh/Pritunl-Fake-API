@@ -4,7 +4,7 @@ LABEL maintainer="admin@samsesh.net"
 LABEL version="0.1"
 LABEL description="This is Docker Image for fake api server pritunl"
 RUN apt-get update
-RUN apt -y install lsb-release apt-transport-https ca-certificates wget software-properties-common
+RUN apt -y install lsb-release apt-transport-https ca-certificates wget software-properties-common curl
 RUN add-apt-repository ppa:ondrej/php
 RUN apt-get update
 #RUN apt-get install apache2 -y
