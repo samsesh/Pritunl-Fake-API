@@ -1,3 +1,3 @@
 #!/bin/bash
 docker build . --file Dockerfile --tag fakeapipritunl:v1
-docker run fakeapipritunl:v1 -p9700:80 up -d
+docker run -d --restart unless-stopped --hostname fakeapi -p 9700:80
