@@ -4,9 +4,8 @@ LABEL maintainer="admin@samsesh.net"
 LABEL version="0.1"
 LABEL description="This is Docker Image for fake api server pritunl"
 RUN apt-get update
-RUN apt -y install lsb-release apt-transport-https ca-certificates wget
-RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
-RUN echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list
+RUN apt -y install lsb-release apt-transport-https ca-certificates wget software-properties-common
+RUN add-apt-repository ppa:ondrej/php
 RUN apt-get update
 #RUN apt-get install apache2 -y
 RUN apt-get -y install php7.4-mysql php7.4-curl php7.4-gd php7.4-intl php-pear php-imagick php7.4-imap php-memcache
