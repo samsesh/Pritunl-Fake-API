@@ -9,8 +9,8 @@ RUN add-apt-repository ppa:ondrej/php
 RUN apt-get update
 #RUN apt-get install apache2 -y
 RUN apt-get -y install php7.4-mysql php7.4-curl php7.4-gd php7.4-intl php-pear php-imagick php7.4-imap php-memcache
-RUN apt-get install -y certbot
-RUN certbot -d $(curl -s https://api.ipify.org/?format=text)
+#RUN apt-get install -y certbot
+#RUN certbot -d $(curl -s https://api.ipify.org/?format=text)
 RUN apache2ctl -M
 COPY ./www/* /var/www/html/
 RUN chown www-data:www-data  -R /var/www/html
