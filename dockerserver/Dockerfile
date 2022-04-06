@@ -45,7 +45,7 @@ RUN apk add --no-cache php7 \
     php7-pdo_sqlite \
     php7-tokenizer \
     php7-pecl-redis
-
+RUN rm -f /usr/bin/php
 RUN ln -s /usr/bin/php7 /usr/bin/php
 # Configure PHP
 RUN mkdir -p /run/php/
