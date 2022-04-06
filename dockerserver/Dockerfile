@@ -22,36 +22,36 @@ RUN apk add bash
 RUN sed -i 's/bin\/ash/bin\/bash/g' /etc/passwd
 
 # Installing PHP
-RUN apk add --no-cache php8 \
-    php8-common \
-    php8-fpm \
-    php8-pdo \
-    php8-opcache \
-    php8-zip \
-    php8-phar \
-    php8-iconv \
-    php8-cli \
-    php8-curl \
-    php8-openssl \
-    php8-mbstring \
-    php8-tokenizer \
-    php8-fileinfo \
-    php8-json \
-    php8-xml \
-    php8-xmlwriter \
-    php8-simplexml \
-    php8-dom \
-    php8-pdo_mysql \
-    php8-pdo_sqlite \
-    php8-tokenizer \
-    php8-pecl-redis
+RUN apk add --no-cache php7 \
+    php7-common \
+    php7-fpm \
+    php7-pdo \
+    php7-opcache \
+    php7-zip \
+    php7-phar \
+    php7-iconv \
+    php7-cli \
+    php7-curl \
+    php7-openssl \
+    php7-mbstring \
+    php7-tokenizer \
+    php7-fileinfo \
+    php7-json \
+    php7-xml \
+    php7-xmlwriter \
+    php7-simplexml \
+    php7-dom \
+    php7-pdo_mysql \
+    php7-pdo_sqlite \
+    php7-tokenizer \
+    php7-pecl-redis
 
-RUN ln -s /usr/bin/php8 /usr/bin/php
+RUN ln -s /usr/bin/php7 /usr/bin/php
 # Configure PHP
 RUN mkdir -p /run/php/
-RUN touch /run/php/php8.0-fpm.pid
-COPY ./php-fpm.conf /etc/php8/php-fpm.conf
-COPY ./php.ini-production /etc/php8/php.ini
+RUN touch /run/php/php7.0-fpm.pid
+COPY ./php-fpm.conf /etc/php7/php-fpm.conf
+COPY ./php.ini-production /etc/php7/php.ini
 
 # Configure supervisor
 RUN mkdir -p /etc/supervisor.d/
