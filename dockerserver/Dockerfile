@@ -25,7 +25,7 @@ RUN apk add bash
 RUN sed -i 's/bin\/ash/bin\/bash/g' /etc/passwd
 
 # Installing PHP
-RUN apk add --no-cache php7 \
+RUN apk update && apk add --no-cache php7 \
     php7-common \
     php7-fpm \
     php7-pdo \
@@ -47,7 +47,15 @@ RUN apk add --no-cache php7 \
     php7-pdo_mysql \
     php7-pdo_sqlite \
     php7-tokenizer \
-    php7-pecl-redis
+    php7-soap \
+    php7-session \ 
+    php7-intl \
+    php7-sodium \
+    php7-sockets \
+    php7-pcntl \
+    php7-gd \
+    php7-mcrypt 
+    
 RUN rm -f /usr/bin/php
 RUN ln -s /usr/bin/php7 /usr/bin/php
 # Configure PHP
